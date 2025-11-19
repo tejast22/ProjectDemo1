@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Warehouse Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">AWM</div>
+      <div>
+        <h1>AI Warehouse Manager</h1>
+        <p class="subtitle">Robot-operated warehouse dashboard</p>
+      </div>
+    </div>
+
+    <div class="top-stats">
+      <div class="stat">
+        <div class="label">Total Robots</div>
+        <div class="value highlight">12</div>
+      </div>
+      <div class="stat">
+        <div class="label">Robots Charging</div>
+        <div class="value accent">3</div>
+      </div>
+      <div class="stat">
+        <div class="label">New Orders</div>
+        <div class="value danger">5</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="left">
+      <div class="panel panel-hero">
+        <div class="panel-head">
+          <h2>Fleet Overview</h2>
+          <div class="panel-actions">
+            <button class="btn primary">Refresh</button>
+            <button class="btn ghost">Export CSV</button>
+          </div>
+        </div>
+
+        <div class="robots-grid">
+          <article class="robot-card charging">
+            <header>
+              <span class="robot-id">R01</span>
+              <span class="robot-status">Charging</span>
+            </header>
+            <div class="battery">
+              <div class="battery-bar" style="width:86%"></div>
+              <div class="battery-label">86%</div>
+            </div>
+            <div class="robot-meta">Dock: A2 · Last task: Pick #A163</div>
+            <div class="robot-actions">
+              <button class="btn small">View</button>
+              <button class="btn small ghost">Details</button>
+            </div>
+          </article>
+
+          <article class="robot-card idle">
+            <header>
+              <span class="robot-id">R05</span>
+              <span class="robot-status">Idle</span>
+            </header>
+            <div class="battery">
+              <div class="battery-bar" style="width:64%"></div>
+              <div class="battery-label">64%</div>
+            </div>
+            <div class="robot-meta">Ready · Location: Zone B</div>
+            <div class="robot-actions">
+              <button class="btn small">Assign</button>
+              <button class="btn small ghost">Map</button>
+            </div>
+          </article>
+
+          <article class="robot-card to-charger">
+            <header>
+              <span class="robot-id">R09</span>
+              <span class="robot-status">To Charger</span>
+            </header>
+            <div class="battery">
+              <div class="battery-bar" style="width:18%"></div>
+              <div class="battery-label">18%</div>
+            </div>
+            <div class="robot-meta">Moving to Dock C1</div>
+            <div class="robot-actions">
+              <button class="btn small danger">Send to Maintenance</button>
+              <button class="btn small ghost">Track</button>
+            </div>
+          </article>
+
+          <article class="robot-card working">
+            <header>
+              <span class="robot-id">R12</span>
+              <span class="robot-status">Working</span>
+            </header>
+            <div class="battery">
+              <div class="battery-bar" style="width:42%"></div>
+              <div class="battery-label">42%</div>
+            </div>
+            <div class="robot-meta">Order: #B201 · ETA: 2m</div>
+            <div class="robot-actions">
+              <button class="btn small">Reassign</button>
+              <button class="btn small ghost">Notes</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Orders Queue</h2>
+          <div class="panel-actions">
+            <button class="btn primary">New Order</button>
+            <button class="btn ghost">Bulk Add</button>
+          </div>
+        </div>
+
+        <div class="orders-list">
+          <div class="order-item">
+            <div class="left">
+              <div class="order-id">#A163</div>
+              <div class="order-desc">3x Pallet · Zone C</div>
+            </div>
+            <div class="right">
+              <div class="order-status queued">Queued</div>
+              <button class="btn small">Assign</button>
+            </div>
+          </div>
+
+          <div class="order-item">
+            <div class="left">
+              <div class="order-id">#B201</div>
+              <div class="order-desc">2x Box · Zone A</div>
+            </div>
+            <div class="right">
+              <div class="order-status assigned">Assigned to R12</div>
+              <button class="btn small ghost">Details</button>
+            </div>
+          </div>
+
+          <div class="order-item">
+            <div class="left">
+              <div class="order-id">#C099</div>
+              <div class="order-desc">1x Crate · Zone B</div>
+            </div>
+            <div class="right">
+              <div class="order-status queued">Queued</div>
+              <button class="btn small">Assign</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="right">
+      <div class="panel panel-compact">
+        <h3>Charging Summary</h3>
+        <div class="charging-list">
+          <div class="charging-item">
+            <div class="dot charging"></div>
+            <div class="text">Dock A2 — R01 — 86%</div>
+          </div>
+          <div class="charging-item">
+            <div class="dot charging"></div>
+            <div class="text">Dock B1 — R03 — 74%</div>
+          </div>
+          <div class="charging-item">
+            <div class="dot charging"></div>
+            <div class="text">Dock C1 — R09 — 18%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-compact">
+        <h3>Quick Controls</h3>
+        <div class="controls-grid">
+          <button class="btn full">Auto Assign: ON</button>
+          <button class="btn outline full">Low Battery Threshold</button>
+          <button class="btn outline full">Pause Fleet</button>
+          <button class="btn full danger">Return All to Dock</button>
+        </div>
+      </div>
+
+      <div class="panel panel-compact">
+        <h3>Activity Log</h3>
+        <div class="log">
+          <div class="log-item"><strong>09:12</strong> R09 heading to charger (18%)</div>
+          <div class="log-item"><strong>09:10</strong> Order #B201 assigned to R12</div>
+          <div class="log-item"><strong>09:02</strong> R01 started charging (86%)</div>
+          <div class="log-item"><strong>08:50</strong> New order #A163 created</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div>System status: <span class="status ok">Operational</span></div>
+    <div class="credits">Design • AI Warehouse Manager • Static mockup</div>
+  </footer>
+</body>
+</html>
